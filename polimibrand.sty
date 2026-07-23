@@ -31,10 +31,11 @@
 \else
   \RequirePackage{fontspec}
   \IfFontExistsTF{Manrope}
-    {\setmainfont{Manrope}\setsansfont{Manrope}}
+    {\setmainfont{Manrope}[BoldFont=Manrope,BoldFeatures={Weight=700},ItalicFont=Manrope,ItalicFeatures={FakeSlant=0.2},BoldItalicFont=Manrope,BoldItalicFeatures={Weight=700,FakeSlant=0.2}]
+     \setsansfont{Manrope}[BoldFont=Manrope,BoldFeatures={Weight=700},ItalicFont=Manrope,ItalicFeatures={FakeSlant=0.2},BoldItalicFont=Manrope,BoldItalicFeatures={Weight=700,FakeSlant=0.2}]}
     {\setmainfont{TeX Gyre Heros}\setsansfont{TeX Gyre Heros}\PackageWarningNoLine{polimibrand}{Manrope not found; using TeX Gyre Heros}}
   \IfFontExistsTF{Frank Ruhl Libre}
-    {\newfontfamily\PolimiSerif{Frank Ruhl Libre}}
+    {\newfontfamily\PolimiSerif{Frank Ruhl Libre}[BoldFont={Frank Ruhl Libre},BoldFeatures={Weight=700},ItalicFont={Frank Ruhl Libre},ItalicFeatures={FakeSlant=0.2},BoldItalicFont={Frank Ruhl Libre},BoldItalicFeatures={Weight=700,FakeSlant=0.2}]}
     {\newfontfamily\PolimiSerif{TeX Gyre Termes}\PackageWarningNoLine{polimibrand}{Frank Ruhl Libre not found; using TeX Gyre Termes}}
 \fi
 
