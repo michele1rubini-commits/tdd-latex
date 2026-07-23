@@ -1,0 +1,17 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.log
+*.lot
+*.out
+*.pdf
+*.synctex.gz
+*.toc
+
+# Operating-system files
+.DS_Store
+
+# Local working files
+tmp/
+output/
