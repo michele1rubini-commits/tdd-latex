@@ -152,11 +152,11 @@
 %% glossary
 \RequirePackage[toc]{glossaries}
 \newglossarystyle{thesisglossay}{%
-\glossarystyle{long}% base this style on the long style
+\setglossarystyle{long}% base this style on the long style
 \renewcommand*{\glsgroupheading}[1]{%
 \textbf{\glsgetgrouptitle{##1}}\\}
 }
-\glossarystyle{thesisglossay}
+\setglossarystyle{thesisglossay}
 
 %%
 %% End of file `phdthesis.sty`
