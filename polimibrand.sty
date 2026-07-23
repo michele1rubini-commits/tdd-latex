@@ -1,0 +1,41 @@
+%% Shared visual tokens for Politecnico di Milano thesis templates.
+%% Based on Brand guidelines, Release 5.0 (October 2025).
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{polimibrand}[2026/07/23 v1.0 Politecnico di Milano brand tokens]
+
+\RequirePackage{xcolor}
+\RequirePackage{iftex}
+
+%% Primary palette
+\definecolor{PolimiBlueHeritage}{HTML}{102C53}
+\definecolor{PolimiCorporateGray}{HTML}{E0DCDC}
+
+%% Secondary palette: Schools and disciplinary areas
+\definecolor{PolimiMatteRed}{HTML}{FF8C8C}
+\definecolor{PolimiAcidGreen}{HTML}{AEDD00}
+\definecolor{PolimiBrightBlue}{HTML}{4DC9FF}
+\definecolor{PolimiAlphaBlue}{HTML}{2CB7FF}
+\definecolor{PolimiBetaBlue}{HTML}{0BA4FF}
+
+%% Semantic accent. Blue Heritage is the institutional default.
+\colorlet{PolimiAccent}{PolimiBlueHeritage}
+\newcommand{\polimiaccent}[1]{\colorlet{PolimiAccent}{#1}}
+
+%% Typography. LuaLaTeX or XeLaTeX use the institutional fonts when installed;
+%% pdfLaTeX keeps the template portable with a broadly available sans-serif fallback.
+\ifPDFTeX
+  \RequirePackage[scaled=0.95]{helvet}
+  \renewcommand{\familydefault}{\sfdefault}
+  \newcommand{\PolimiSerif}{\rmfamily}
+  \PackageWarningNoLine{polimibrand}{Use LuaLaTeX or XeLaTeX with Manrope and Frank Ruhl Libre installed for the full Polimi typographic system}
+\else
+  \RequirePackage{fontspec}
+  \IfFontExistsTF{Manrope}
+    {\setmainfont{Manrope}\setsansfont{Manrope}}
+    {\setmainfont{TeX Gyre Heros}\setsansfont{TeX Gyre Heros}\PackageWarningNoLine{polimibrand}{Manrope not found; using TeX Gyre Heros}}
+  \IfFontExistsTF{Frank Ruhl Libre}
+    {\newfontfamily\PolimiSerif{Frank Ruhl Libre}}
+    {\newfontfamily\PolimiSerif{TeX Gyre Termes}\PackageWarningNoLine{polimibrand}{Frank Ruhl Libre not found; using TeX Gyre Termes}}
+\fi
+
+\endinput

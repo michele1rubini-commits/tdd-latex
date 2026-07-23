@@ -21,17 +21,16 @@
 %%  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %%
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesPackage{phdthesis}[2007/09/11 v1.0 PhD Thesis Style]
+\ProvidesPackage{phdthesis}[2026/07/23 v2.0 Polimi PhD Thesis Style]
 
-%% Set the font packages and options
-%% for better typesetting
-\RequirePackage{times}
-%\renewcommand{\familydefault}{\sfdefault}
+%% Shared typography and colour tokens for the current Polimi identity.
+\RequirePackage{polimibrand}
 
 %% Set the options for the captions of figures,
 %% tables, etc.
 \RequirePackage{caption}
-\captionsetup{format=plain,indention=.5cm,singlelinecheck=false,labelfont=bf,textfont=it}
+\captionsetup{format=plain,indention=.5cm,singlelinecheck=false,
+  labelfont={bf,color=PolimiBlueHeritage},textfont=normalfont}
 
 %% change the equation number appearance
 %% load up the AMS math package
@@ -41,16 +40,6 @@
 \RequirePackage{amsthm}
 \newtheorem{defn}{Definition}[chapter]
 
-%% load up the fancy box making package
-\RequirePackage{fancybox}
-
-%% make the equation numbers have little ovals around them
-% \def\tagform@#1{\maketag@@@{\cornersize{0.8}\ovalbox{\ignorespaces\sffamily{#1}\unskip\@@italiccorr}}}
-
-%% Load up PS insertion package
-\RequirePackage{psboxit}
-\PScommands
-
 %% Load up fancy headers and footers package
 \RequirePackage{fancyhdr}
 
@@ -58,14 +47,17 @@
 \fancyhead{}
 \fancyfoot{}
 %% make the odd pages have the section name on the top right
-\fancyhead[RO]{\sffamily\bfseries\nouppercase{\rightmark}}
+\fancyhead[RO]{\small\sffamily\color{PolimiBlueHeritage}\nouppercase{\rightmark}}
 %% make the even pages have the chapter name on the top left
-\fancyhead[LE]{\sffamily\bfseries\nouppercase{\leftmark}}
+\fancyhead[LE]{\small\sffamily\color{PolimiBlueHeritage}\nouppercase{\leftmark}}
 
 %% Add author name and institution to the bottom of the page
 %\fancyfoot[RE,LO]{\textit{\@author}}
 %\fancyfoot[CE,CO]{\small{Politecnico di Milano}}
-\fancyfoot[CE,CO]{\thepage}
+\fancyfoot[CE,CO]{\sffamily\color{PolimiBlueHeritage}\thepage}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{PolimiCorporateGray}\leaders\hrule height \headrulewidth\hfill}}
 
 %% put the page numbers on the bottom in a nice box
 %% even side pages
@@ -87,7 +79,7 @@
 %% to have the same page number stuff on the bottom
 \fancypagestyle{plain}{
 \fancyhf{}
-\fancyfoot[CE,CO]{\thepage}
+\fancyfoot[CE,CO]{\sffamily\color{PolimiBlueHeritage}\thepage}
 %\fancyfoot[RE,LO]{\textit{\@author}}
 %\fancyfoot[CE,CO]{\small{Politecnico di Milano}}
 %\fancyfoot[RO]{\psboxit{box 1 setgray fill}
@@ -117,16 +109,25 @@
 %%% make the quotation appear next to the chapter number
 %\renewcommand\chapterheadstartvskip{\vspace*{-5\baselineskip}}
 
-%% Alternative Chapter Style
-\RequirePackage[Sonny]{fncychap} % Sonny was Bjornstrup
-\ChNumVar{\fontsize{76}{80}\usefont{OT1}{pzc}{m}{n}\selectfont}
-\ChTitleVar{\raggedleft\LARGE\sffamily\bfseries}
-
-%% now change the section heading to have a line beneath it
-%% load up the fancy title-style package
-\RequirePackage[calcwidth]{titlesec}
-\titleformat{\section}[hang]{\sffamily\bfseries}
-{\Large\thesection}{12pt}{\large}[{\titlerule[0.5pt]}]
+%% Chapter and section hierarchy
+\RequirePackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\sffamily\color{PolimiBlueHeritage}}
+  {\fontsize{34}{38}\selectfont\bfseries\thechapter}
+  {0.75ex}
+  {\fontsize{26}{31}\selectfont\bfseries}
+  [\vspace{0.65ex}\color{PolimiAccent}\titlerule]
+\titlespacing*{\chapter}{0pt}{0pt}{4ex}
+\titleformat{\section}[hang]
+  {\Large\sffamily\bfseries\color{PolimiBlueHeritage}}
+  {\thesection}{0.7em}{}
+  [\vspace{0.35ex}\color{PolimiCorporateGray}\titlerule]
+\titleformat{\subsection}[hang]
+  {\large\sffamily\bfseries\color{PolimiBlueHeritage}}
+  {\thesubsection}{0.7em}{}
+\titleformat{\subsubsection}[hang]
+  {\normalsize\sffamily\bfseries\color{PolimiBlueHeritage}}
+  {\thesubsubsection}{0.7em}{}
 
 %% Used to have big letters at the beginning of each Chapter
 \RequirePackage{type1cm}
@@ -140,9 +141,8 @@
 \RequirePackage[subfigure,titles]{tocloft}
 %\setlength{\cftbeforechapskip}{2ex}
 %\setlength{\cftbeforesecskip}{0.5ex}
-\renewcommand{\cftchapfont}{%
-\usefont{OT1}{phv}{bc}{n}\selectfont
-}
+\renewcommand{\cftchapfont}{\sffamily\bfseries\color{PolimiBlueHeritage}}
+\renewcommand{\cftchappagefont}{\sffamily\bfseries\color{PolimiBlueHeritage}}
 \makeatletter
 \renewcommand{\@pnumwidth}{1.75em}
 \renewcommand{\@tocrmarg}{2.75em}

@@ -28,7 +28,6 @@
 \usepackage{phdthesis}
 
 \usepackage{fancyhdr}
-\usepackage{color}
 \usepackage{array}
 \usepackage{mdwmath}
 \usepackage{mdwtab}
@@ -40,7 +39,6 @@
 \usepackage{subfig}
 \usepackage{booktabs}
 \usepackage{latexsym}
-\usepackage{color}
 \usepackage{url}
 \usepackage{bnf}
 \usepackage{rotating}
@@ -49,13 +47,17 @@
 \usepackage{paralist}
 \usepackage{bibentry}
 %\usepackage[algochapter]{algorithm2e}
-\usepackage[bookmarks=true,pdftex=false,bookmarksopen=true,pdfborder={0,0,0}]{hyperref}
+\usepackage[bookmarks=true,bookmarksopen=true,pdfborder={0,0,0}]{hyperref}
 \usepackage{lscape}
 \usepackage{algorithmic}
 \usepackage{algorithm}
 \usepackage{longtable}
-\usepackage[T1]{fontenc} 
-\usepackage[latin1]{inputenc}
+% Compile with LuaLaTeX or XeLaTeX (with Manrope and Frank Ruhl Libre installed)
+% to use the institutional fonts. pdfLaTeX remains supported with a fallback.
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\fi
 
 %% \hyphenation{} is used to force the 
 \hyphenation{}
@@ -73,14 +75,19 @@
 
 \nobibliography*
 
-\department {Department XXX}
-\phdprogram{Doctoral Programme In YXYX}
+\department{Department XXX}
+\phdprogram{Doctoral Programme in YXYX}
+% Optional accent for the disciplinary area or School.
+% Available values: PolimiMatteRed, PolimiAcidGreen, PolimiBrightBlue,
+% PolimiAlphaBlue, PolimiBetaBlue, PolimiBlueHeritage.
+\polimiaccent{PolimiBrightBlue}
 
 \author{Name Surname}
 \title{Title}
 \supervisor{Supervisor Name}
 \tutor{Tutor Name}
-\supervisor{Coordinator Name}
+\coordinator{Coordinator Name}
+% Prefer the official horizontal logo asset; the supplied logo is kept as fallback.
 \titleimage{img/logopoli.png}
 \phdcycle{Year -- Cycle}
 
